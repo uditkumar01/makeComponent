@@ -6,7 +6,7 @@ A cool shell script to make React component templates at ease
 
 -   Open terminal on linux OS.
 -   Then clone the repo using `git clone https://github.com/uditkumar01/makeComponent.git`
--   Then type the folling commands:
+-   Then type the following commands:
     -   `sudo apt install tree`
     -   `cd makeComponent`
     -   `mv mkcomp ~/../../bin`
