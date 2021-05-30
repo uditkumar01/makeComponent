@@ -168,6 +168,8 @@ test('test message', () => {
         printf "\n${BIYellow}$componentName component template ready!!!${Color_Off}\n\n"
 
         tree
+        printf "\n${BIYellow}Developed by uditkumar01${Color_Off}\n"
+        printf "\nRepository link: ${Green}https://github.com/uditkumar01/makeComponent.git${Color_Off}\n\n"
     fi
 
 }
@@ -310,3 +312,5 @@ else
     # create Component
     createComponent
 fi
+
+# made by uditkumar01
