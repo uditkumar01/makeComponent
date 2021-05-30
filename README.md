@@ -1,4 +1,5 @@
-# makeComponent
+# MakeComponent 
+## For React
 
 A cool shell script to make React component templates at ease
 
