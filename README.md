@@ -1,6 +1,6 @@
 # makeComponent
 
-A cool shell script to make component templates at ease
+A cool shell script to make React component templates at ease
 
 ### Installation and Setup
 
