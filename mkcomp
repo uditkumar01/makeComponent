@@ -162,8 +162,7 @@ test('test message', () => {
 
         # editing index file
 
-        echo """export { $componentName } from './$componentName/$componentName';
-        """ >>"src/Components/index.${ext}"
+        echo """export { $componentName } from './$componentName/$componentName';""" >>"src/Components/index.${ext}"
 
         # ending the process
         printf "\n${BIYellow}$componentName component template ready!!!${Color_Off}\n\n"
