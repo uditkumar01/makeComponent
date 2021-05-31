@@ -18,7 +18,7 @@ A cool shell script to make React component templates at ease
 ### Updating your existing `mkcomp` script
 
 -   Open terminal on linux OS.
--   Go to github repo https://github.com/uditkumar01/makeComponent copy the code of `mkcomp`.
+-   Go to github repo https://raw.githubusercontent.com/uditkumar01/makeComponent/main/mkcomp copy the code of `mkcomp`.
 -   Then type the following commands:
     -   `sudo gedit ~/../../bin/mkcomp`
 -   A gedit editor will open
