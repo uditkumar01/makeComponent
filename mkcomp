@@ -95,12 +95,16 @@ helpFunction() {
 
 createComponent() {
 
+    # component name converted from camel case to hypen string
+    componentNameWithHypen="$(echo $componentName | sed 's/\(.\)\([A-Z]\)/\1-\2/g' | tr '[:upper:]' '[:lower:]')"
+
     # jsx file template with css import
     textJSXWithCss="""import './$componentName.css';
+    
 
 export function $componentName() {
     return (
-        <div className={'$componentName'}>
+        <div className={'$componentNameWithHypen'}>
         </div>
     );
 }
@@ -110,7 +114,7 @@ export function $componentName() {
 
     textJSXWithOutCss="""export function $componentName() {
     return (
-        <div className={'$componentName'}>
+        <div className={'$componentNameWithHypen'}>
         </div>
     );
 }
@@ -141,7 +145,8 @@ test('test message', () => {
 
             # if css file is imported
 
-            touch "src/Components/$componentName/$componentName.css"
+            echo """.$componentNameWithHypen {
+}""" >"src/Components/$componentName/$componentName.css"
 
             echo "$textJSXWithCss" >"src/Components/$componentName/$componentName.${ext}x"
 
