@@ -35,4 +35,6 @@ A cool shell script to make React component templates at ease
 -   Will automatically create boiler plate code for the component generated.
 -   Will automatically export the file from `index.js`
 
+### Demo Usage
 
+https://user-images.githubusercontent.com/55291327/120177430-0e561380-c226-11eb-8f08-71066d01b656.mp4
