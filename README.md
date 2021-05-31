@@ -9,7 +9,7 @@ A cool shell script to make React component templates at ease
 -   Then type the following commands:
     -   `sudo apt install tree`
     -   `cd makeComponent`
-    -   `mv mkcomp ~/../../bin`
+    -   `sudo mv mkcomp ~/../../bin`
     -   `sudo chmod +x ~/../../bin/mkcomp`
 -   Open a new terminal and try running the command `mkcomp`
 
