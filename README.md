@@ -17,6 +17,9 @@ A cool shell script to make React component templates at ease
 
 ### How to use?
 
+-   Usage: mkcomp `--clean`
+    `--clean` will help you to remove unwanted files/folders and structure them properly. Everything is automated.
+
 -   Usage: `mkcomp --gui`
 
     **OR**
@@ -35,6 +38,7 @@ A cool shell script to make React component templates at ease
 -   If you made css file then it will automatically be imported in the jsx/tsx file.
 -   Will automatically create boiler plate code for the component generated.
 -   Will automatically export the file from `index.js`
+-   You can clean your create react app initial template using `-clean` command easily.
 
 ### Demo Usage
 

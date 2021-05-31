@@ -83,6 +83,9 @@ On_IWhite='\033[0;107m'  # White
 # default component JSX file text
 
 helpFunction() {
+    printf "\n${BIBlue}Usage: mkcomp --clean${Color_Off}\n"
+    printf "\n${Blue}--clean will help you to remove unwanted files/folders and structure them properly. Everything is automated.${Color_Off}\n"
+
     printf "\n${BIBlue}Usage: mkcomp --gui${Color_Off}\n"
     printf "\n\t${BIYellow}OR${Color_Off}\n"
     printf "\n${BIBlue}Usage: mkcomp component-name -ct extension${Color_Off}\n\n"
@@ -90,6 +93,8 @@ helpFunction() {
     printf "${Blue}\t-c = Do you need a css file?${Color_Off}\n"
     printf "${Blue}\t-t = Do you need a test file?${Color_Off}\n\n"
     printf "${Blue}\textension = -ts/--typescript/-js/--javascript${Color_Off}\n\n"
+
+    printf "\n${BIYellow}mkcomp${Color_Off} ${Yellow}v1.0.0 by dev uditkumar01${Color_Off}\n\n"
     exit 1 # Exit script after printing help
 }
 
@@ -134,7 +139,7 @@ test('test message', () => {
         exit 1
     elif [ ! -d "src/Components" ]; then
         mkdir "src/Components"
-        printf "${BIGreen}Made Component folder${Color_Off}\n"
+        printf "\n${BIGreen}Made Component folder${Color_Off}\n"
     fi
     if [ -d "src/Components/$componentName" ]; then
         printf "${BIRed}$componentName file already exists!${Color_off}\n"
@@ -251,6 +256,92 @@ else
 
     componentName=$1
 
+    if [[ $componentName = "--clean" ]]; then
+
+        rm -rf ./public/favicon.ico ./public/logo192.png ./public/logo512.png ./src/logo.svg
+
+        indexFileText="""<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8' />
+        <link rel='icon' href='%PUBLIC_URL%/favicon.ico' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='theme-color' content='#000000' />
+        <meta
+            name='description'
+            content='Web site created using create-react-app'
+        />
+        <link rel='manifest' href='%PUBLIC_URL%/manifest.json' />
+        <title>React App</title>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id='root'></div>
+    </body>
+</html>
+"""
+        if [ -f "public/index.html" ]; then
+            echo "$indexFileText" >"public/index.html"
+        fi
+
+        if [ -f "src/App.jsx" ] || [ -f "src/App.js" ]; then
+            rm -rf ./src/App.jsx ./src/App.test.jsx ./src/App.test.js ./src/App.css ./src/App.js
+            mkcomp App -ct -js
+
+            # changing text of src/index.js
+            if [ -f "src/index.js" ]; then
+                indexJsFileTextRead=""
+
+                while IFS= read -r line; do
+                    printf ""
+
+                    if [[ "$line" == *"import App from"* ]]; then
+                        indexJsFileTextRead+="""import { App } from './Components';
+"""
+                    else
+                        indexJsFileTextRead+="""${line}
+"""
+                    fi
+                done <"src/index.js"
+
+                echo "${indexJsFileTextRead}" >"src/index.js"
+            fi
+        elif [ -f "src/App.tsx" ]; then
+            rm -rf ./src/App.tsx ./src/App.test.tsx ./src/App.test.ts ./src/App.css ./src/App.ts
+            mkcomp App -ct -ts
+
+            # changing text of src/index.js
+
+            if [ -f "src/index.tsx" ]; then
+
+                indexTsFileTextRead=""
+
+                while IFS= read -r line; do
+                    printf ""
+
+                    if [[ "$line" == *"import App from"* ]]; then
+
+                        indexTsFileTextRead+="""import { App } from './Components/index';
+"""
+                    else
+                        indexTsFileTextRead+="""${line}
+"""
+                    fi
+                done <"src/index.tsx"
+
+                echo "${indexTsFileTextRead}" >"src/index.tsx"
+            fi
+        fi
+
+        echo -ne "${BIPurple}###########                     (33%)${Color_Off}\r"
+        sleep 1
+        echo -ne "${BIWhite}###################             (66%)${Color_Off}\r"
+        sleep 1
+        echo -ne "${BIGreen}#############################   (100%)${Color_Off}\r"
+        echo -ne '\n\n'
+        exit 1
+    fi
+
     if [ -z "$componentName" ]; then
         printf "\n${BIRed}Error !!! You forgot to enter component name\n\n${Color_Off}"
         helpFunction
@@ -315,6 +406,7 @@ else
     needTest="$(tr '[:lower:]' '[:upper:]' <<<${needTest:0:1})${needTest:1}"
 
     # create Component
+
     createComponent
 fi
 
