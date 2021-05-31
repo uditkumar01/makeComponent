@@ -1,4 +1,4 @@
-# MakeComponent For React
+# MakeComponent For React v0.0.1
 
 A cool shell script to make React component templates at ease
 
@@ -12,6 +12,7 @@ A cool shell script to make React component templates at ease
     -   `cd makeComponent`
     -   `sudo mv mkcomp ~/../../bin`
     -   `sudo chmod +x ~/../../bin/mkcomp`
+
 -   Open a new terminal and try running the command `mkcomp`
 
 ### How to use?
