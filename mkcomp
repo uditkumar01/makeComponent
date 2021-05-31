@@ -128,28 +128,28 @@ test('test message', () => {
     if [ ! -d "src" ]; then
         printf "${BIRed}./src File not found!${Color_Off}\n"
         exit 1
-    elif [ ! -d "src/Component" ]; then
-        mkdir "src/Component"
+    elif [ ! -d "src/Components" ]; then
+        mkdir "src/Components"
         printf "${BIGreen}Made Component folder${Color_Off}\n"
     fi
-    if [ -d "src/Component/$componentName" ]; then
+    if [ -d "src/Components/$componentName" ]; then
         printf "${BIRed}$componentName file already exists!${Color_off}\n"
         exit 1
-    elif [ -d "src/Component" ]; then
-        mkdir "src/Component/$componentName"
+    elif [ -d "src/Components" ]; then
+        mkdir "src/Components/$componentName"
         if [[ $needCss = "Y" ]]; then
 
             # if css file is imported
 
-            touch "src/Component/$componentName/$componentName.css"
+            touch "src/Components/$componentName/$componentName.css"
 
-            echo "$textJSXWithCss" >"src/Component/$componentName/$componentName.${ext}x"
+            echo "$textJSXWithCss" >"src/Components/$componentName/$componentName.${ext}x"
 
         else
 
             # if css file is not imported
 
-            echo "$textJSXWithOutCss" >"src/Component/$componentName/$componentName.${ext}x"
+            echo "$textJSXWithOutCss" >"src/Components/$componentName/$componentName.${ext}x"
 
         fi
 
@@ -157,17 +157,17 @@ test('test message', () => {
 
             # if test file is needed
 
-            echo "$textTest" >"src/Component/$componentName/$componentName.test.${ext}"
+            echo "$textTest" >"src/Components/$componentName/$componentName.test.${ext}"
         fi
 
         # editing index file
 
-        echo "export { $componentName } from './$componentName/$componentName';" >>"src/Component/index.${ext}"
+        echo "export { $componentName } from './$componentName/$componentName';" >>"src/Components/index.${ext}"
 
         # ending the process
         printf "\n${BIYellow}$componentName component template ready!!!${Color_Off}\n\n"
 
-        tree "src/Component/"
+        tree "src/Components/"
         printf "\n${BIYellow}Developed by uditkumar01${Color_Off}\n"
         printf "\nRepository link: ${Green}https://github.com/uditkumar01/makeComponent.git${Color_Off}\n\n"
     fi
