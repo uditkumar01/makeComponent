@@ -1,4 +1,4 @@
-# MakeComponent For React `v0.0.1`
+# MakeComponent For React `v1.0.0`
 
 A cool shell script to make React component templates at ease
 
