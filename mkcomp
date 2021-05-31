@@ -96,7 +96,7 @@ helpFunction() {
 createComponent() {
 
     # jsx file template with css import
-    textJSXWithCss="""import '$componentName.css';
+    textJSXWithCss="""import './$componentName.css';
 
 export function $componentName() {
     return (
