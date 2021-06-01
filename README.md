@@ -1,4 +1,4 @@
-# MakeComponent For React `v1.0.0`
+# 🌟 MakeComponent For React `v1.1.0` 🌟
 
 A cool shell script to make React component templates at ease
 
@@ -41,7 +41,7 @@ A cool shell script to make React component templates at ease
     -   `-t` => Do you need a test file?
     -   extension => `-ts` / `--typescript` / `-js` / `--javascript`
 
-### Features
+### Features v1.0.0
 
 -   You can create components with just a single command.
 -   GUI interface is also supported for ease of use.
@@ -49,7 +49,11 @@ A cool shell script to make React component templates at ease
 -   If you made css file then it will automatically be imported in the jsx/tsx file.
 -   Will automatically create boiler plate code for the component generated.
 -   Will automatically export the file from `index.js`
+
+### Features v1.1.0
+
 -   You can clean your create react app initial template using `-clean` command easily.
+-   Now the imports exports in index file will be properly formatted 👌.
 
 ### Demo Usage
 
