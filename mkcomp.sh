@@ -139,7 +139,7 @@ test('test message', () => {
         exit 1
     elif [ ! -d "src/Components" ]; then
         mkdir "src/Components"
-        printf "\n${BIGreen}Made Component folder${Color_Off}\n"
+        printf "\n${Blue}Made Component folder${Color_Off}\n"
     fi
     if [ -d "src/Components/$componentName" ]; then
         printf "${BIRed}$componentName file already exists!${Color_off}\n"
@@ -172,12 +172,36 @@ test('test message', () => {
 
         # editing index file
 
-        echo """export { $componentName } from './$componentName/$componentName';""" >>"src/Components/index.${ext}"
+        if ! [ -f "src/Components/index.${ext}" ]; then
+            touch "src/Components/index.${ext}"
+        fi
+
+        indexExportsText=$(cat "src/Components/index.${ext}")
+
+        indexExportsText=${indexExportsText##*( )}
+
+        if ! [ -z "$indexExportsText" ]; then
+            indexExportsText+="""
+export { $componentName } from './$componentName/$componentName';"""
+        else
+            indexExportsText+="""export { $componentName } from './$componentName/$componentName';"""
+        fi
+
+        indexExportsText=${indexExportsText##*( )}
+
+        echo "$indexExportsText" >"src/Components/index.${ext}"
 
         # ending the process
         printf "\n${BIYellow}$componentName component template ready!!!${Color_Off}\n\n"
 
-        tree "src/Components/"
+        echo -ne "${BIPurple}###########                     (33%)${Color_Off}\r"
+        sleep 1
+        echo -ne "${BIWhite}###################             (66%)${Color_Off}\r"
+        sleep 1
+        echo -ne "${BIGreen}#############################   (100%)${Color_Off}\r"
+        echo -ne '\n\n'
+
+        tree "src/Components/$componentName"
         printf "\n${BIYellow}Developed by uditkumar01${Color_Off}\n"
         printf "\nRepository link: ${Green}https://github.com/uditkumar01/makeComponent.git${Color_Off}\n\n"
     fi
@@ -333,12 +357,12 @@ else
             fi
         fi
 
-        echo -ne "${BIPurple}###########                     (33%)${Color_Off}\r"
-        sleep 1
-        echo -ne "${BIWhite}###################             (66%)${Color_Off}\r"
-        sleep 1
-        echo -ne "${BIGreen}#############################   (100%)${Color_Off}\r"
-        echo -ne '\n\n'
+        # echo -ne "${BIPurple}###########                     (33%)${Color_Off}\r"
+        # sleep 1
+        # echo -ne "${BIWhite}###################             (66%)${Color_Off}\r"
+        # sleep 1
+        # echo -ne "${BIGreen}#############################   (100%)${Color_Off}\r"
+        echo -ne ''
         exit 1
     fi
 
